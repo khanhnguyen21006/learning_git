@@ -1,0 +1,59 @@
+Description
+Eagles eat lambs. The pasture on which lambs live can be described as a 1xN rectangle-shaped land, and it’s divided into 1x1 cells. The cells are numbered as 1, 2, ... , N from left to right. In the i-th cell, there are Ai lambs living in it.
+
+Every morning, an eagle hunts lambs. The eagle starts from the left-side of the first cell or the right-side of the right cell, and heads to the cell in which its target lamb lives. The eagle can only fly through the cells (directly on the pasture). If the target lamb is in the x-th cell, then it first flies to cell x, and it eats all of the lambs in it. The eagle can only eat lambs from one cell each day.
+
+Lambs are scared of the eagle, so lambs begin to run away as soon as they see the eagle flying. Precisely, lambs run away when the eagle flies over the exact cell they live in. When the lambs run away from where the live, there will be no lambs left in that cell. For instance, if the eagle flies from the left-side of the first cell and arrive at cell x, then all of the lambs in cells 1, 2, …, x-1 would run away and there will not be any lambs left in those cells. Likewise, if the eagle flies from the right-side of the n-th cell, then all of the lambs living in cells x+1, x+2, …, N would run away.
+
+In addition, one lamb from each cell goes missing (or gets eaten by other predators) every night.
+
+The total number of lambs this eagle can hunt (and eat) depends on where it flies from (whether from the left-side or the right-side) as well as which cell it targets. Compute the maximum number of lambs this eagle can eat. 
+
+Input
+The first line contains N, the number of cells (1 = N = 1,000).
+
+The second line contains N integers A1, A2, …, AN, representing the number of lambs in each cell (0 = Ai = 100,000).
+
+Output
+The first line must contain the maximum number of lambs the eagle can eat.
+
+Sample Input 1 
+5
+1 10 4 10 1
+Sample Output 1 
+21
+On day 1, the eagle flies from the left and eats all lambs in cell 2; it would eat 10 lambs. After this, there will be no lambs left in cell 1 and 2. At night, each cell’s one lamb goes missing (if any), so the cells 3 and 4 would have 3 and 9 lambs, respectively, and other cells will not contain any lambs.
+On day 2, the eagle flies from the right, and eats the nine lambs in cell 4. The eagle has eaten 19 lambs at this point.
+At night one lamb from cell 3 goes missing, leaving only two lambs in it and no lambs in other cells. 
+On day 3, the eagle can eat the lambs in cell 3, totaling in 21 lambs. 
+There are many other ways to eat 21 lambs.
+
+Sample Input 2 
+5
+1 1 1 1 1
+Sample Output 2 
+1
+
+Sample Input 3 
+6
+10 1 1 1 1 10
+Sample Output 3 
+19
+
+Sample Input 4 
+7
+1 2 3 4 5 6 7
+Sample Output 4 
+16
+
+Sample Input 5 
+14
+10 1 10 2 10 3 10 4 10 3 10 2 10 1
+Sample Output 5 
+49
+
+Sample Input 6 
+4
+0 0 0 0
+Sample Output 6 
+0

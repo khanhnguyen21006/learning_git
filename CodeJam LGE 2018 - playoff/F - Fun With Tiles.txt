@@ -1,0 +1,66 @@
+Description
+Albert got a lot of 1x2 tiles from a friend. This tile is shaped as two rectangular cells combined together, like the following:
+
+(Image 1 here)
+
+Coincidentally, Albert’s vacation home balcony needs some repair -- now he can use the tiles he got for free! The balcony’s floor is a rectangle-shape which consists of R x C equal-size rectangle cells. The following example shows a sample with R = 4 and C = 5. Using one 1x2 tile, Albert can cover two horizontally adjacent rectangle cells completely. However he cannot rotate a tile and cover two vertically adjacent cells.
+
+(Image 2 here)
+
+Because his vacation home hasn’t been in use for a long time, a few cells have been damaged. In the example above, out of 20 cells, only six cells are undamaged (the grey ones) whereas the other fourteen cells are damaged and therefore need to be replaced. As Albert only has 1x2 tiles, he may not be able to cover all of the damaged cells, but he wishes to cover as many damaged cells as possible.
+
+A single tile must cover two damaged cells completely, no tiles should overlap, no tile should go beyond the boundary of the balcony, and no tile should cover an undamaged cell.
+
+In the sample example above, Albert can use six tiles to cover the most number of damaged cells. Although the tiles are identical (indistinguishable), for the sake of explanation, the six tiles are labeled in the following example.
+
+(Image 3 here)
+
+There are two other ways to use six tiles to cover damaged cells.
+
+(Image 4,5 here)  
+
+Albert is curious to know in how many different ways he can cover damaged cells -- while using as many tiles as possible. When Albert covers the floor in two different ways, we say that those two ways are “different ways” if there is at least one cell such that the cell is covered in one way but not in the other. If no such cells exist, then the two ways are the same because tiles are not distinguishable.
+
+Input
+The first line of input contains three integers R (the number of rows), C (the number of columns), and K (the number of undamaged cells). Assume that 1 = R = 1,000,000,000, 2 = C = 1,000,000,000 and 0 = K = 1,000.
+
+Each of the next K lines contains two integers (row number and column number) of an undamaged cell (rows are numbered 1 to R and columns from 1 to C). These K cells do not contain duplicates.
+
+In addition, each test cases guarantees that at least one tile can be placed.
+
+Output
+You must output two integers. The first integer is the maximum number of tiles Albert can place, while meeting the conditions mentioned in the problem statement. The second number is the number of different ways in which Albert can place the maximum number of tiles.  You can assume that the first number is at most 1018. The second number can be very large, and therefore you must output this number modulo 1,000,000,007.
+
+Sample Input 1 
+2 2 0
+Sample Output 1 
+2 1
+Each row requires one tile, and this is the unique way (to use maximum number of tiles).
+
+Sample Input 2 
+2 3 1
+2 2
+Sample Output 2 
+1 2
+The first row can be filled with one tile (in two different ways), but the second row cannot be filled.
+
+Sample Input 3 
+4 5 6
+1 2
+1 3
+3 1
+4 3
+4 4
+4 5
+Sample Output 3 
+6 3
+Sample Input 4 
+1000000000 1000000000 0
+Sample Output 4 
+500000000000000000 1
+Sample Input 5 
+1000000000 1000000000 2
+324873289 23476755
+99584832 4721222
+Sample Output 5 
+499999999999999998 750063488

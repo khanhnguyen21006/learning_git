@@ -1,0 +1,42 @@
+Description
+Albert recently learned about integers, digits, and subtraction. He's so fascinated by these new mathematical concepts, and he invented a game called the "Tricky Numbers".
+
+In this game, he first picks an integer digit A (A is between 0 and 9, inclusive). He then defines 'A-tricky numbers' as follows. A positive integer x is an "A-tricky number" if the following conditions are met:
+
+If x only has one digit (i.e., x is between 1 and 9, inclusive), then it is an A-tricky number.
+If x contains two or more digits, and the (absolute) difference between every pair of consecutive digits of x is greater than or equal to A, then x is an A-tricky number.
+For instance, suppose Albert picks A = 0. Then every positive integer is a 0-tricky number.
+
+When A = 1, the following list shows the first thirty 1-tricky numbers:
+
+1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, ...
+
+Albert wants to find the K-th smallest A-tricky number (given A and K), and to verify whether his findings are correct -- he needs your help! Note that the number can be very large for certain values of K and A. Therefore, Albert says you can simply give him the K-th smallest A-tricky number modulo (10^9+7).
+
+Input
+The first line will contain a positive integer, T (1 = T = 100), which is the number of test cases. Each of the following T lines will contain two positive integers (K and A), separated by a whitespace. K is between 1 and 10^18 (inclusive) and A is between 0 and 9 (inclusive).
+
+Output
+For each test case, you should output the K-th smallest A-tricky number (modulo (10^9+7)). Each test case's output should be contained in a single line (see the sample output below).
+
+Sample Input 1 
+8
+5 0
+5 1
+30 1
+12 2
+20 5
+21 5
+30 8
+1000 8
+Sample Output 1 
+5
+5
+32
+15
+50
+60
+9190
+80902435
+For the fourth test case (K = 12 and A = 2), note that 10, 11, and 12 are not 2-tricky numbers.
+For the last case, the actual answer is 808080908091 (before applying the modulo operation).

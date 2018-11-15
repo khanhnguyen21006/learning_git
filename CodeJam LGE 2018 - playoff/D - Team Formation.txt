@@ -1,0 +1,57 @@
+D - Team Formation
+Description
+Albert's school is hosting a hackathon event for students. There are N students who wish to participate in the event. Let's label the students as 1, 2, ..., N.
+
+Student i wants to participate in the event if and only if the team he/she belongs to has at most Xi members in it (including student i). Because the space is limited at the event venue, the school needs to minimize the number of teams. More precisely, Albert wants to compute the minimum number of teams while meeting the following conditions:
+
+Every student is assigned to exactly one team
+Each team contains at least one student
+If student i belongs to a team, then the number of students in the team (including student i) is no greater than Xi.
+Albert needs to help his school host the event successfully, and you need to help Albert determine the minimum number of teams that can be formed given students' constraints. 
+
+Hint
+For instance, suppose there are five students (N = 5) with X1 = 1, X2 = 2, X3 = 5, X4 = 2, and X5 = 1. In particular, student 3 wishes to be in a team with at most 5 members, whereas students 2 and 4 at most 2 students. 
+
+One (trivial) way to form teams is to let each student form a 1-person team -- this yields five teams. Or, we can let students 2 and 4 form one team, and the other three students form 1-person teams -- this results in four teams. In this example, there is no way to form 3 or fewer teams while meeting the said conditions.
+
+Input
+The first line will contain the number of students, N (1 = N = 100,000).
+
+The second line will contain N integers representing Xi values for each student. Assume that 1 = Xi = N for all i's.
+
+Output
+You should output a single number, representing the minimum number of teams that can be formed.
+
+Sample Input 1 
+2
+2 2
+Sample Output 1 
+1
+
+Sample Input 2 
+5
+1 2 5 2 1
+Sample Output 2 
+4
+
+Sample Input 3 
+5
+1 2 1 2 1
+Sample Output 3 
+4
+
+Sample Input 4 
+9
+2 2 2 3 3 3 2 2 2
+Sample Output 4 
+4
+Here is one solution to assign students to four teams:
+{1, 9}, {2, 8}, {3, 7}, {4, 5, 6}.
+
+Sample Input 5 
+9
+2 2 2 2 2 3 3 3 3
+Sample Output 5 
+4
+Here is one solution to assign students to four teams:
+{1, 2}, {3, 4}, {5, 6}, {7, 8, 9}.

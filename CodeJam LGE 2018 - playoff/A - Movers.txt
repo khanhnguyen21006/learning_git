@@ -1,0 +1,39 @@
+Description
+Alex and his movers are moving items from a house. This household has exactly A items each of which is 1 kg, B items 2kg, C items 3kg, D items 4 kg, and E items 5 kg.
+
+In order to move them, items should be put into a box where each box can hold up to 5kg.  Alex wants to minimize the number boxes his crew needs, while putting all items into boxes. 
+
+The sum of the weight of items in any box cannot exceed 5kg.
+
+Given how many items of each weigh there are, compute the minimum number of boxes Alex needs. 
+
+Input
+The first line contains five integers, A, B, C, D, and E (0 = A, B, C, D, E = 1,000).
+
+Output
+You must output in a single line the minimum number of boxes Alex needs.
+
+Sample Input 1 
+5 0 0 0 0
+Sample Output 1 
+1
+
+Sample Input 2 
+0 0 0 0 5
+Sample Output 2 
+5
+
+Sample Input 3 
+1 1 1 1 1
+Sample Output 3 
+3
+
+Sample Input 4 
+10 8 2 7 3
+Sample Output 4 
+15
+
+Sample Input 5 
+8 2 7 3 0
+Sample Output 5 
+10
