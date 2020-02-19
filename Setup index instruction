@@ -1,0 +1,103 @@
+Setting up an index in favour of analyzing Chinese
+
+1. Create index with declaration of analyzer and filter in settings
+
+```
+PUT INDEX_NAME
+{
+  "settings": {
+    "index": {
+      "analysis": {
+        "analyzer": {
+          "smartcn_with_stop": {
+            "tokenizer": "smartcn_tokenizer",
+            "filter": [
+              "porter_stem",
+              "my_smartcn_stop"
+            ]
+          }
+        },
+        "filter": {
+          "my_smartcn_stop": {
+            "type": "smartcn_stop",
+            "stopwords": [
+              "_smartcn_",
+              "stack",
+              "的"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
+```
+2. Mapping an property with above analyzer (smartcn_with_stop) - this is also the field used for query text
+
+```
+PUT INDEX_NAME/_mapping
+{
+  "properties": {
+      "di_search_field": {
+        "type": "text",
+        "fields": {
+          "keyword": { 
+            "type": "keyword",
+            "ignore_above" : 256
+          }
+        },
+        "term_vector": "with_positions_offsets_payloads",
+        "store" : true,
+        "analyzer" : "smartcn_with_stop"
+       }
+    }
+}
+```
+
+3. Enable fielddata for aggregation 
+
+```
+PUT weibo_17022020/_mapping
+{
+  "properties": {
+      "like_count" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          },
+          "fielddata" : true
+        },
+       "share_count" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          },
+          "fielddata" : true
+        },
+        "comment_count" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          },
+          "fielddata" : true
+        }
+    }
+}
+```
+
+```
+Before you enable fielddata, consider why you are using a text field for aggregations, sorting, or in a script. It usually doesn’t make sense to do so.
+
+A text field is analyzed before indexing so that a value like New York can be found by searching for new or for york. A terms aggregation on this field will return a new bucket and a york bucket, when you probably want a single bucket called New York.
+
+Instead, you should have a text field for full text searches, and an unanalyzed keyword field with doc_values enabled for aggregations.
+```
