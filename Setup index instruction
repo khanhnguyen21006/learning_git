@@ -57,7 +57,71 @@ PUT INDEX_NAME/_mapping
 3. Enable fielddata for aggregation 
 
 ```
-PUT weibo_17022020/_mapping
+PUT wbfeed_**/_mapping
+{
+  "properties": {
+      "like_count" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          },
+          "fielddata" : true
+        },
+       "share_count" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          },
+          "fielddata" : true
+        },
+        "comment_count" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          },
+          "fielddata" : true
+        },
+        "view_count" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          },
+          "fielddata" : true
+        },
+        "author" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        },
+        "docId" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        }
+    }
+}
+
+PUT wbcomment_**/_mapping
 {
   "properties": {
       "like_count" : {
@@ -99,7 +163,40 @@ PUT weibo_17022020/_mapping
             }
           }
         },
+        "docId" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        }
+    }
+}
+
+PUT wbuser_**/_mapping
+{
+  "properties": {
+        "uid" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        },
         "location" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        }
+        "occupation" : {
           "type" : "text",
           "fields" : {
             "keyword" : {
