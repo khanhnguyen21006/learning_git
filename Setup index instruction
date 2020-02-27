@@ -89,6 +89,24 @@ PUT weibo_17022020/_mapping
             }
           },
           "fielddata" : true
+        },
+        "author" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
+        },
+        "location" : {
+          "type" : "text",
+          "fields" : {
+            "keyword" : {
+              "type" : "keyword",
+              "ignore_above" : 256
+            }
+          }
         }
     }
 }
